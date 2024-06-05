@@ -1,9 +1,19 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Forum, Arizonia } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "./components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const forum = Forum({ 
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-forum',
+});
+
+const arizonia = Arizonia({ 
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-arizonia',
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${forum.variable} ${arizonia.variable}`}>
         <Navbar />
         {children}</body>
     </html>
