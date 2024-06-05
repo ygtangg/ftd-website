@@ -29,7 +29,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${forum.variable} ${arizonia.variable}`}>
         <Navbar />
-        {children}</body>
+        {children}
+      </body>
     </html>
   );
 }

@@ -16,9 +16,11 @@ export const Navbar = () => {
                 "flex-col",
                 "flex",
                 "absolute",
-                "left-1/2",
+                "pl-6",
                 "top-[100px]",
-                "gap-5"
+                "gap-5",
+                "w-full",
+                "bg-white"
             ];
         } else {
             menuClasses.push("hidden");
@@ -28,26 +30,28 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="bg-white text-white p-4 sm:p-6 md:flex md:justify-between md:items-center">
+        <nav className="bg-white text-white p-2 sm:p-6 md:flex md:justify-between md:items-center">
             <div className="container mx-auto flex justify-between items-center">
-                <Image src={logo} height={100} alt="logo" />
+                <Link href="/home">
+                    <Image src={logo} height={100} alt="logo" />
+                </Link>
                 <div className={getMenuClasses()}>
-                    <Link href="/" className="text-black text-sm mx-2 hover:text-primary">
+                    <Link href="/home" className="text-black text-base mx-2 hover:text-primary">
                         Home
                     </Link>
-                    <Link href="/about" className="text-black text-sm mx-2 hover:text-primary">
+                    <Link href="/about" className="text-black text-base mx-2 hover:text-primary">
                         About Us
                     </Link>
-                    <Link href="/gallery" className="text-black text-sm mx-2 hover:text-primary">
+                    <Link href="/gallery" className="text-black text-base mx-2 hover:text-primary">
                         Gallery
                     </Link>
-                    <Link href="/events" className="text-black text-sm mx-2 hover:text-primary">
+                    <Link href="/events" className="text-black text-base mx-2 hover:text-primary">
                         Events
                     </Link>
-                    <Link href="/join" className="text-black text-sm mx-2 hover:text-primary">
+                    <Link href="/join" className="text-black text-base mx-2 hover:text-primary">
                         Join Us
                     </Link>
-                    <Link href="/contact" className="text-black text-sm mx-2 hover:text-primary">
+                    <Link href="/contact" className="text-black text-base mx-2 hover:text-primary">
                         Contact
                     </Link>
                 </div>
