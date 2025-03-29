@@ -12,6 +12,9 @@ const config: Config = {
         primary: '#730909',
         lightpink: '#E5C9C9'
       },
+      fontSize: {
+        '20xl': '12rem',
+      },
     },
   },
   plugins: [],

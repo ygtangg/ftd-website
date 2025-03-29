@@ -8,6 +8,10 @@ html, body {
   font-family: var(--font-forum);
 }
 
+h1, h2 {
+  font-family: var(--font-arizonia);
+}
+
 #__next {
   display: flex;
   flex-direction: column;
