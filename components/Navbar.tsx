@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { use, useState } from "react";
 import Image from "next/image"; 
-import logo from "../../public/image/ftd_logo.png"
+import logo from "../public/image/ftd_logo.png"
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +30,7 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="bg-white text-white p-2 sm:p-6 md:flex md:justify-between md:items-center">
+        <nav className="bg-white text-white md:flex md:justify-between md:items-center">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/home">
                     <Image src={logo} height={100} alt="logo" />

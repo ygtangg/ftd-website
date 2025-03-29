@@ -9,7 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: '#730909'
+        primary: '#730909',
+        lightpink: '#E5C9C9'
       },
     },
   },
