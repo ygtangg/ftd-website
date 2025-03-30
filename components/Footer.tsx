@@ -8,9 +8,9 @@ export const Footer = () => {
                 <div className="flex flex-col items-center">
                     <h5 className="font-bold mb-2">Contact Us</h5>
                     <div className="flex space-x-4 mb-2">
-                        <a href="#" className="hover:underline">Facebook</a>
-                        <a href="#" className="hover:underline">Twitter</a>
-                        <a href="#" className="hover:underline">Instagram</a>
+                        <a href="https://www.facebook.com/FeiTianDancers" target="_blank" rel="noopener noreferrer" className="hover:underline">Facebook</a>
+                        <a href="https://www.instagram.com/fei_tian_dancers/" target="_blank" rel="noopener noreferrer" className="hover:underline">Instagram</a>
+                        <a href="https://www.youtube.com/user/FeiTianUCB" target="_blank" rel="noopener noreferrer" className="hover:underline">YouTube</a>
                     </div>
                     <div className="text-sm">
                             &copy; {new Date().getFullYear()} FTD
