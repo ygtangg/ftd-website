@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { use, useState } from "react";
+import { useState } from "react";
 import Image from "next/image"; 
 import logo from "../public/image/ftd_logo.png"
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { Button } from "@/components/ui/button";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -30,30 +32,33 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="bg-white text-white md:flex md:justify-between md:items-center">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-white text-white md:flex md:justify-between md:items-center shadow-sm">
             <div className="container mx-auto flex justify-between items-center">
-                <Link href="/home">
+                <Link href="/">
                     <Image src={logo} height={100} alt="logo" />
                 </Link>
                 <div className={getMenuClasses()}>
-                    <Link href="/home" className="text-black text-base mx-2 hover:text-primary">
+                    <Link href="/" className="text-black text-base mx-2 hover:text-jujube">
                         Home
                     </Link>
-                    <Link href="/about" className="text-black text-base mx-2 hover:text-primary">
+                    <Link href="/about" className="text-black text-base mx-2 hover:text-jujube">
                         About Us
                     </Link>
-                    <Link href="/gallery" className="text-black text-base mx-2 hover:text-primary">
+                    <Link href="/gallery" className="text-black text-base mx-2 hover:text-jujube">
                         Gallery
                     </Link>
-                    <Link href="/events" className="text-black text-base mx-2 hover:text-primary">
+                    <Link href="/events" className="text-black text-base mx-2 hover:text-jujube">
                         Events
                     </Link>
-                    <Link href="/join" className="text-black text-base mx-2 hover:text-primary">
+                    <Link href="/join" className="text-black text-base mx-2 hover:text-jujube">
                         Join Us
                     </Link>
-                    <Link href="/contact" className="text-black text-base mx-2 hover:text-primary">
+                    <Link href="/contact" className="text-black text-base mx-2 hover:text-jujube">
                         Contact
                     </Link>
+                    <Button asChild className="bg-jujube text-white mx-2 hover:bg-jujube/80">
+                        <LoginLink>Sign In</LoginLink>
+                    </Button>
                 </div>
                 <div className={ "md:hidden flex items-center"}>
                     <button 
