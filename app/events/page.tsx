@@ -33,7 +33,7 @@ export default function Events() {
                     
                     {/* Event Poster */}
                     <div className="md:w-1/2">
-                        <div className="w-full aspect-square bg-gray-200 border-8 border-primary relative">
+                        <div className="w-full aspect-square bg-gray-200 border-8 border-jujube relative">
                             <div className="absolute inset-0 flex items-center justify-center text-gray-500">
                                 Poster
                             </div>
@@ -43,7 +43,7 @@ export default function Events() {
             </section>
                         
             {/* Coming Soon Section */}
-            <section className="h-[30vw] py-24 px-4 md:px-8 lg:px-16 bg-primary text-white flex items-center justify-center">
+            <section className="h-[30vw] py-24 px-4 md:px-8 lg:px-16 bg-jujube text-white flex items-center justify-center">
                 <h2 className="text-5xl font-script text-center">Coming Soon</h2>
             </section>
         </div>

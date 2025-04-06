@@ -23,7 +23,7 @@ export default function About() {
             <section className="flex flex-col md:flex-row py-8 px-4 md:px-8">
                 <div className="md:w-1/2 p-4">
                     <div className="w-full max-w-xs mx-auto mb-6">
-                        <h1 className="text-4xl font-script text-center text-primary border-b-2 border-primary pb-2 mb-8">
+                        <h1 className="text-4xl font-script text-center text-jujube border-b-2 border-jujube pb-2 mb-8">
                             About Us
                         </h1>
                     </div>
@@ -50,7 +50,7 @@ export default function About() {
             </section>
 
             {/* Board Section */}
-            <section className="py-12 px-4 md:px-8 bg-primary text-white">
+            <section className="py-12 px-4 md:px-8 bg-jujube text-white">
                 <h2 className="text-4xl font-script text-center mb-12">Board</h2>
                 <div className="flex flex-wrap justify-center gap-8 md:gap-12">
                     {boardMembers.map((member, index) => (
@@ -65,7 +65,7 @@ export default function About() {
 
             {/* Dancers Section */}
             <section className="py-12 px-4 md:px-8">
-                <div className="relative border border-primary p-6 pt-8 mt-8">
+                <div className="relative border border-jujube p-6 pt-8 mt-8">
                     <h2 className="text-4xl font-script text-center absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-8">Dancers</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                         {dancers.map((dancer, index) => (

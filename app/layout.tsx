@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Forum, Arizonia } from "next/font/google";
 import "./globals.css";
-import { Navbar } from "../components/Navbar";
-import { Footer } from "../components/Footer";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 
 const forum = Forum({ 
@@ -32,7 +32,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${forum.variable} ${arizonia.variable}`}>
         <Navbar />
-        {children}
+        <main className="pt-[100px]"> 
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
