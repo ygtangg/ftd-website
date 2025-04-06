@@ -5,13 +5,13 @@ import { useState } from "react";
 import Image from "next/image"; 
 import logo from "../public/image/ftd_logo.png"
 import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
-import { Button } from "@/components/ui/button";
+import { LogInIcon } from "lucide-react";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     function getMenuClasses() {
-        let menuClasses = ["md:block", "md:flex-row"];
+        let menuClasses = ["md:flex md:items-center", "md:space-x-1 lg:space-x-3"];
 
         if (isOpen) {
             menuClasses = [
@@ -34,7 +34,7 @@ export const Navbar = () => {
     return (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-white text-white md:flex md:justify-between md:items-center shadow-sm">
             <div className="container mx-auto flex justify-between items-center">
-                <Link href="/">
+                <Link href="/home">
                     <Image src={logo} height={100} alt="logo" />
                 </Link>
                 <div className={getMenuClasses()}>
@@ -56,9 +56,10 @@ export const Navbar = () => {
                     <Link href="/contact" className="text-black text-base mx-2 hover:text-jujube">
                         Contact
                     </Link>
-                    <Button asChild className="bg-jujube text-white mx-2 hover:bg-jujube/80">
-                        <LoginLink>Sign In</LoginLink>
-                    </Button>
+                    <LoginLink className="flex items-center text-black text-base mx-2 hover:text-jujube">
+                        <LogInIcon className="mr-1 h-4 w-4" />
+                        Sign In
+                    </LoginLink>
                 </div>
                 <div className={ "md:hidden flex items-center"}>
                     <button 

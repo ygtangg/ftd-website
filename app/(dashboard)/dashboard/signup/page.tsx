@@ -2,7 +2,7 @@
 
 export default function MemberDashboard() {
   return (
-    <div className="container mx-auto px-4 py-8 pt-[120px]">
+    <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Member Dashboard</h1>
       
       <div className="p-6 bg-white rounded-lg shadow-md">
