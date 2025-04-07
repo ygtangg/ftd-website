@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "../globals.css";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/navigation";
 import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,19 +12,11 @@ export const metadata: Metadata = {
   description: "FTD Members Dashboard",
 };
 
-export default async function DashboardLayout({
+export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const { isAuthenticated } = getKindeServerSession();
-  
-  // Check if user is authenticated
-  const authenticated = await isAuthenticated();
-  if (!authenticated) {
-    redirect("/unauthorized");
-  }
-  
   return (
     <div className="flex flex-col h-screen">
       <header className="fixed top-0 left-0 right-0 h-20 bg-white border-b z-20 flex items-center justify-between px-7">

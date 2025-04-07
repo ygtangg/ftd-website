@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { redirect } from "next/navigation";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
-export default function Unauthorized() {
+export default async function Unauthorized() {
+  const { isAuthenticated } = getKindeServerSession();
+  const authenticated = await isAuthenticated();
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="text-center max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
@@ -15,10 +20,10 @@ export default function Unauthorized() {
         </ul>
         <div className="flex flex-col space-y-2">
           <Link 
-            href="/" 
+            href={authenticated ? "/dashboard" : "/"} 
             className="bg-jujube text-white py-2 px-4 rounded hover:bg-jujube/80"
           >
-            Go Home
+            {authenticated ? "Go to Dashboard" : "Go Home"}
           </Link>
           <Link 
             href="/contact" 
