@@ -3,6 +3,16 @@ import Image from "next/image";
 import zellerbach from "@/public/image/zellerbach_fa23.png";
 import { useState, useEffect } from "react";
 import YouTubeVideo from "@/components/YouTubeVideo";
+import { createClient } from "@/lib/supabase/client";
+import { format } from "date-fns";
+
+// Define the Event type
+type Event = {
+  id: string;
+  event_name: string;
+  event_datetime: string;
+  event_location: string;
+};
 
 export default function Home() {
     // Define video IDs from the YouTube URLs
@@ -14,10 +24,32 @@ export default function Home() {
 
     // State to track if client-side is rendering (for YouTube component)
     const [isClient, setIsClient] = useState(false);
-    
-    // Set isClient to true when component mounts
+    const [events, setEvents] = useState<Event[]>([]);
+
     useEffect(() => {
         setIsClient(true);
+    }, []);
+
+    // Fetch events from Supabase
+    useEffect(() => {
+        const fetchEvents = async () => {
+            const supabase = createClient();
+            const { data, error } = await supabase
+                .from('event')
+                .select('id, event_name, event_datetime, event_location')
+                .gt('event_datetime', new Date().toISOString())
+                .order('event_datetime', { ascending: true })
+                .limit(3);
+
+            if (error) {
+                console.error('Error fetching events:', error);
+                return;
+            }
+            console.log('Fetched events:', data);
+            setEvents(data || []);
+        };
+
+        fetchEvents();
     }, []);
 
     return(
@@ -44,22 +76,22 @@ export default function Home() {
             <section className="py-12 px-4 md:px-8 lg:px-16">
                 <h2 className="text-5xl mb-8">Upcoming Performance</h2>
                 <div className="border-l border-gray-300 pl-6 ml-4">
-                    <div className="mb-6 flex">
-                        <div className="flex-1">
-                            <h3 className="font-medium text-xl">Performance 1</h3>
-                        </div>
-                        <div className="flex-1">
-                            <p>Date</p>
-                        </div>
-                    </div>
-                    <div className="mb-6 flex">
-                        <div className="flex-1">
-                            <h3 className="font-medium text-xl">Performance 2</h3>
-                        </div>
-                        <div className="flex-1">
-                            <p>Date</p>
-                        </div>
-                    </div>
+                    {events.length > 0 ? (
+                        events.map((event) => (
+                            <div key={event.id} className="mb-6 flex">
+                                <div className="flex-1">
+                                    <h3 className="font-medium text-xl">{event.event_name}</h3>
+                                    <p className="text-gray-600">{event.event_location}</p>
+                                </div>
+                                <div className="flex-1">
+                                    <p>{format(new Date(event.event_datetime), 'MMMM d, yyyy')}</p>
+                                    <p>{format(new Date(event.event_datetime), 'h:mm a')}</p>
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <p className="text-gray-500">No upcoming performances scheduled.</p>
+                    )}
                 </div>
             </section>
 
