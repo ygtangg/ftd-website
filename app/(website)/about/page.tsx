@@ -1,7 +1,5 @@
-"use client";
 import styles from "./page.module.css";
 import Image from "next/image";
-import { useState } from "react";
 
 export default function About() {
     // Placeholder board members data - replace with actual data
@@ -77,9 +75,6 @@ export default function About() {
                     </div>
                 </div>
             </section>
-
-            {/* Optional Footer Background */}
-            <div className="bg-lightpink h-8"></div>
         </div>
     )
 }

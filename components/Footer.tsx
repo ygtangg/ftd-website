@@ -3,7 +3,7 @@ import logo from "../public/image/ftd_logo.png"
 
 export const Footer = () => {
     return (
-        <footer className="bg-lightpink opacity-85 text-black py-6">
+        <footer className="bg-lightpink opacity-85 text-black py-6 mb-0">
             <div className="container mx-auto flex justify-center items-center">
                 <div className="flex flex-col items-center">
                     <h5 className="font-bold mb-2">Contact Us</h5>

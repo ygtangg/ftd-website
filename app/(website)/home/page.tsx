@@ -1,10 +1,11 @@
 "use client";
+
 import Image from "next/image"; 
 import zellerbach from "@/public/image/zellerbach_fa23.png";
 import { useState, useEffect } from "react";
 import YouTubeVideo from "@/components/YouTubeVideo";
 import { createClient } from "@/lib/supabase/client";
-import { format } from "date-fns";
+import { motion } from "framer-motion";
 
 // Define the Event type
 type Event = {
@@ -15,14 +16,12 @@ type Event = {
 };
 
 export default function Home() {
-    // Define video IDs from the YouTube URLs
     const videoIds = [
         "E_ODj4TrG9g",
         "2etgnaNvOT8",
         "xf1SdvA-6V0"
     ];
 
-    // State to track if client-side is rendering (for YouTube component)
     const [isClient, setIsClient] = useState(false);
     const [events, setEvents] = useState<Event[]>([]);
 
@@ -40,12 +39,12 @@ export default function Home() {
                 .gt('event_datetime', new Date().toISOString())
                 .order('event_datetime', { ascending: true })
                 .limit(3);
-
+                
             if (error) {
                 console.error('Error fetching events:', error);
                 return;
             }
-            console.log('Fetched events:', data);
+            
             setEvents(data || []);
         };
 
@@ -64,40 +63,74 @@ export default function Home() {
                     priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-red-900/60 via-black/60 to-red-900/60 backdrop-blur-[2px] flex flex-col items-center justify-center text-white text-center px-4 md:px-8">
-                    <h1 className="text-7xl md:text-20xl mb-6">Fei Tian Dancers</h1>
-                    <p className="max-w-3xl text-sm md:text-xl leading-relaxed">
+                    <motion.h1 
+                        className="text-7xl md:text-20xl mb-6"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                    >
+                        Fei Tian Dancers
+                    </motion.h1>
+                    <motion.p 
+                        className="max-w-3xl text-sm md:text-xl leading-relaxed"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 1.5, delay: 0.5 }}
+                    >
                         Fei Tian Dancers (FTD) is a community of University of California, Berkeley students passionate about dance
                         and dedicated to presenting Chinese culture to the Bay Area.
-                    </p>
+                    </motion.p>
                 </div>
             </div>
 
             {/* Upcoming Performances Section */}
             <section className="py-12 px-4 md:px-8 lg:px-16">
-                <h2 className="text-5xl mb-8">Upcoming Performance</h2>
+                <motion.h2 
+                    className="text-5xl mb-8 text-jujube"
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                >
+                    Upcoming Performance
+                </motion.h2>
                 <div className="border-l border-gray-300 pl-6 ml-4">
                     {events.length > 0 ? (
-                        events.map((event) => (
-                            <div key={event.id} className="mb-6 flex">
+                        events.map((event, index) => (
+                            <motion.div 
+                                key={event.id} 
+                                className="mb-6 flex"
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.2 }}
+                            >
                                 <div className="flex-1">
-                                    <h3 className="font-medium text-xl">{event.event_name}</h3>
-                                    <p className="text-gray-600">{event.event_location}</p>
+                                    <h3 className="font-medium text-3xl">{event.event_name}</h3>
+                                    <p className="text-xl text-gray-600">{event.event_location}</p>
                                 </div>
                                 <div className="flex-1">
-                                    <p>{format(new Date(event.event_datetime), 'MMMM d, yyyy')}</p>
-                                    <p>{format(new Date(event.event_datetime), 'h:mm a')}</p>
+                                    <p className="text-2xl">{new Date(event.event_datetime).toLocaleDateString()}</p>
+                                    <p className="text-xl">{new Date(event.event_datetime).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))
                     ) : (
-                        <p className="text-gray-500">No upcoming performances scheduled.</p>
+                        <motion.p 
+                            className="text-gray-500"
+                            initial={{ opacity: 0 }}
+                            whileInView={{ opacity: 1 }}
+                            viewport={{ once: true }}
+                        >
+                            No upcoming performances scheduled.
+                        </motion.p>
                     )}
                 </div>
             </section>
 
             {/* Past Performances Section */}
             <section className="py-12 px-4 md:px-8 lg:px-16 bg-white">
-                <h2 className="text-5xl font-script mb-8">Past Performance</h2>
+                <h2 className="text-5xl font-script mb-8 text-jujube">Past Performance</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     {isClient && videoIds.map((videoId, index) => (
                         <div key={index} className="aspect-video bg-gray-200 relative overflow-hidden">
@@ -107,6 +140,27 @@ export default function Home() {
                     ))}
                 </div>
             </section>
+
+            {/* New parallax image section */}
+            <motion.div 
+                className="h-[40vh] relative bg-fixed bg-cover bg-center overflow-hidden"
+                style={{ backgroundImage: `url(${zellerbach.src})` }}
+                initial={{ opacity: 0.8 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+            >
+                <div className="absolute inset-0 bg-black/80 flex items-center justify-center">
+                    <motion.h3 
+                        className="italic text-white text-4xl md:text-6xl px-4 text-center"
+                        initial={{ scale: 0.9 }}
+                        whileInView={{ scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1 }}
+                    >
+                        Join us for our next performance
+                    </motion.h3>
+                </div>
+            </motion.div>
         </div>
     )
 }

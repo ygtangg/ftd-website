@@ -15,12 +15,12 @@ export default function WebsiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <Navbar />
-      <main className="pt-[100px]"> 
+      <main className="pt-[100px] flex-grow"> 
         {children}
       </main>
       <Footer />
-    </>
+    </div>
   );
 }
