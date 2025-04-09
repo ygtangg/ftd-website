@@ -4,12 +4,14 @@ import Link from "next/link";
 import { useState } from "react";
 import Image from "next/image"; 
 import logo from "../public/image/ftd_logo.png"
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { LogInIcon } from "lucide-react";
 
 export const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     function getMenuClasses() {
-        let menuClasses = ["md:block", "md:flex-row"];
+        let menuClasses = ["md:flex md:items-center", "md:space-x-1 lg:space-x-3"];
 
         if (isOpen) {
             menuClasses = [
@@ -54,6 +56,10 @@ export const Navbar = () => {
                     <Link href="/contact" className="text-black text-base mx-2 hover:text-jujube">
                         Contact
                     </Link>
+                    <LoginLink className="flex items-center text-black text-base mx-2 hover:text-jujube">
+                        <LogInIcon className="mr-1 h-4 w-4" />
+                        Sign In
+                    </LoginLink>
                 </div>
                 <div className={ "md:hidden flex items-center"}>
                     <button 
