@@ -38,7 +38,7 @@ export const Navbar = () => {
                     <Image src={logo} height={100} alt="logo" />
                 </Link>
                 <div className={getMenuClasses()}>
-                    <Link href="/" className="text-black text-base mx-2 hover:text-jujube">
+                    <Link href="/home" className="text-black text-base mx-2 hover:text-jujube">
                         Home
                     </Link>
                     <Link href="/about" className="text-black text-base mx-2 hover:text-jujube">

@@ -21,8 +21,9 @@ export default function Join() {
             
             {/* Content */}
             <div className="relative z-10 text-center text-white flex flex-col items-center px-4">
-                <h1 className="text-6xl md:text-8xl mb-16">JOIN US!</h1>
-                
+                <h1 className="text-6xl md:text-8xl mb-10">JOIN US!</h1>
+                <p className="text-xl mb-10">We hold auditions at the beginning of each semester. Each performance 
+                    piece have seperate auditions. Stay tuned for more information!</p>
                 <Link 
                     href="https://forms.gle/yourformlink" 
                     target="_blank" 
