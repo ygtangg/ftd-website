@@ -32,7 +32,7 @@ export const Navbar = () => {
     }
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-white text-white md:flex md:justify-between md:items-center shadow-sm">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-lightpink opacity-85 text-white md:flex md:justify-between md:items-center shadow-sm">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/">
                     <Image src={logo} height={100} alt="logo" />

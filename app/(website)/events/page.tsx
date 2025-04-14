@@ -1,9 +1,7 @@
-"use client";
 import styles from "./page.module.css";
 import Image from "next/image";
 
 export default function Events() {
-    // Sample event data - replace with your actual events
     const events = [
         {
             name: "Event Name",
@@ -11,7 +9,7 @@ export default function Events() {
             date: "Date:",
             time: "Time:",
             location: "Location:",
-            poster: "/path/to/poster.jpg"  // Replace with actual poster path
+            poster: "/path/to/poster.jpg"
         }
     ];
 
@@ -22,12 +20,14 @@ export default function Events() {
                 <div className="flex flex-col md:flex-row md:items-center gap-8">
                     {/* Event Details */}
                     <div className="md:w-1/2 flex flex-col items-center text-center">
-                        <h1 className="text-5xl font-script mb-6">Event Name</h1>
+                        <h1 className="text-jujube text-5xl font-script mb-6">Spring 2025 Showcase</h1>
                         <div className="space-y-1">
-                            <p className="mb-4">bla bla bla</p>
-                            <p>Date:</p>
-                            <p>Time:</p>
-                            <p>Location:</p>
+                            <p className="italic text-lg mb-4">Join us to experience the elegance of classical, Han-Tang, Dai, 
+                                and Dunhuang group pieces, alongside a vibrant array of solo, duet, 
+                                and trio performances highlighting the rich diversity of Chinese dance styles! </p>
+                            <p>May 11, 2025</p>
+                            <p>1:00 - 3:00 PM</p>
+                            <p>@ Hearst Gym 230</p>
                         </div>
                     </div>
                     
