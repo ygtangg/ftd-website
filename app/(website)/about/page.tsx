@@ -1,5 +1,5 @@
 import Image from "next/image";
-import homcom from "@/public/image/homcom.png";
+import homcom from "@/public/image/homcom.jpeg";
 import { createClient } from "@/lib/supabase/server";
 
 type Dancer = {
