@@ -1,6 +1,11 @@
+"use client";
+
 import Image from "next/image";
 import homcom from "@/public/image/homcom.jpeg";
-import { createClient } from "@/lib/supabase/server";
+import DancerCard from "@/components/DancerCard"
+import { createClient } from "@/lib/supabase/client";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 type Dancer = {
     first_name: string;
@@ -9,52 +14,76 @@ type Dancer = {
     fav_dance_style: string;
     facts: string;
     role: string;
-  };
+    picture_url: string;
+};
   
 
-export default async function About() {
-    const supabase = await createClient()
+export default function About() {
+    const [dancers, setDancers] = useState<Dancer[]>([]);
 
-    const { data, error } = await supabase
-        .from('dancers')
-        .select('*')
-        .order('last_name', { ascending: true })
-        
-    if (error) {
-        console.error('Error fetching dancers:', error);
-        return;
-    }
+    // Fetch dancers from Supabase
+    useEffect(() => {
+        const fetchDancers = async () => {
+            const supabase = await createClient();
+            const { data, error } = await supabase
+                .from('dancers')
+                .select('*')
+                .order('last_name', { ascending: true })
+            
+            if (error) {
+                console.error('Error fetching dancers:', error);
+                return;
+            }
+            
+            const withURL = data.map((d) => ({
+                ...d,
+                picture_url: d.picture
+                    ? supabase
+                        .storage
+                        .from("pictures/members/")
+                        .getPublicUrl(d.picture)
+                        .data
+                        .publicUrl
+                    : null,
+            }))
 
-    const boardMem = data
+            setDancers(withURL || []);
+        };
+
+        fetchDancers();
+    }, []);
+    
+    const boardMem = dancers
         .filter((dancer) => dancer.role !== 'member')
         .map((dancer: Dancer) => ({
             name: `${dancer.first_name} ${dancer.last_name}`,
             role: dancer.role,
-            image: dancer.picture,
+            image: dancer.picture_url,
             facts: dancer.facts,
             style: dancer.fav_dance_style,
         }));
 
-    const dancersList = data
+    const generalMem = dancers
         .filter((dancer) => dancer.role === 'member')
         .map((dancer: Dancer) => ({
             name: `${dancer.first_name} ${dancer.last_name}`,
-            image: dancer.picture,
+            image: dancer.picture_url,
             facts: dancer.facts,
             style: dancer.fav_dance_style,
         }));
-    
-    // Placeholder dancers data - replace with actual data
-    const dancers = Array(10).fill(null).map((_, i) => ({
-        name: "Name",
-        image: "/path/to/dancer-image.jpg"
-    }));
 
+    console.log(generalMem);
     return(
         <div className="flex flex-col">
             {/* About Us Section */}
             <section className="flex flex-col md:flex-row py-8 px-4 md:px-8">
-                <div className="md:w-1/2 p-10">
+                <motion.div 
+                    className="md:w-1/2 p-10"
+                    initial={{ opacity: 1, x: -100 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7 }}
+                >
                     <div className="w-full max-w-xs mx-auto mb-6">
                         <h1 className="text-5xl font-script text-center text-jujube border-b-2 border-jujube pb-2 mb-8">
                             About Us
@@ -71,13 +100,14 @@ export default async function About() {
                         repertoire through creating original choreography & learning 
                         traditional works, performing on campus & throughout the Bay Area.
                     </p>
-                </div>
+                </motion.div>
                 <div className="md:w-1/2 py-6 px-10 flex justify-center items-center">
                     <div className="w-full h-80 bg-gray-200 relative">
                         <div className="absolute inset-0 flex items-center justify-center text-gray-400">
                             <Image 
                                 src={homcom} 
                                 alt="homcom" 
+                                placeholder='blur'
                                 fill
                                 className="object-cover" />
                         </div>
@@ -90,25 +120,7 @@ export default async function About() {
                 <h2 className="text-5xl font-script text-center mb-6">Board</h2>
                 <div className="w-[70vw] m-auto flex flex-wrap justify-evenly gap-8 md:gap-20">
                     {boardMem.map((board, index) => (
-                        <div key={index} className="text-center mb-8">
-                            <div className="relative w-[15vw] h-[15vw] mx-auto">
-                                <Image 
-                                    src={
-                                        board.image ||
-                                        `https://avatar.iran.liara.run/public/girl?username=${encodeURIComponent(board.name)}`
-                                    }
-                                    alt={board.name}
-                                    fill
-                                    className="rounded-full aspect-square object-cover"
-                                />
-                            </div>
-                            <div className="flex flex-col items-center justify-center mt-2 gap-2">
-                                <h3 className="text-2xl mt-4">{board.name}</h3>
-                                <p className="text-lg mb-0">{board.role}</p>
-                                <p className="w-[80%] m-auto">Fav Chinese dance style: {board.style}</p>
-                                <p className="w-[80%] m-auto">{board.facts}</p>
-                            </div>
-                      </div>
+                        <DancerCard key={index} dancer={board} />
                     ))}
                 </div>
             </section>
@@ -118,23 +130,8 @@ export default async function About() {
                 <div className="relative border border-jujube p-6 pt-10 mt-8">
                     <h2 className="text-5xl text-center absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-8">Dancers</h2>
                     <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                        {dancersList.map((dancer, index) => (
-                            <div key={index} className="text-center mb-8">
-                                <div className="relative w-[200px] h-[200px] mx-auto">
-                                    <Image 
-                                        src={
-                                            dancer.image ||
-                                            `https://avatar.iran.liara.run/public/girl?username=${encodeURIComponent(dancer.name)}`
-                                        }
-                                        alt={dancer.name}
-                                        fill
-                                        className="rounded-full aspect-square object-cover"
-                                    />
-                                </div>
-                                <h3 className="text-2xl mt-4">{dancer.name}</h3>
-                                <p className="w-[80%] m-auto text-sm">Fav Chinese dance style: {dancer.style}</p>
-                                <p className="w-[80%] m-auto text-sm">{dancer.facts}</p>
-                            </div>
+                        {generalMem.map((dancer, index) => (
+                            <DancerCard key={index} dancer={dancer} />
                         ))}
                     </div>
                 </div>

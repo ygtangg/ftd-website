@@ -7,7 +7,6 @@ import YouTubeVideo from "@/components/YouTubeVideo";
 import { createClient } from "@/lib/supabase/client";
 import { motion } from "framer-motion";
 
-// Define the Event type
 type Event = {
   id: string;
   event_name: string;

@@ -10,7 +10,7 @@ const nextConfig = {
             {
                 protocol: 'https',
                 hostname: 'gpqfmstteyodfvouofgt.supabase.co',
-                pathname: '/storage/**',
+                pathname: '/storage/v1/object/public/pictures/**',
             },
         ]
     },
