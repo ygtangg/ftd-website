@@ -1,4 +1,3 @@
-"use client";
 import styles from "./page.module.css";
 import Image from "next/image";
 import group_pic from "@/public/image/group_pic_fa24.jpg";

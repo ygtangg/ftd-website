@@ -60,7 +60,10 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+  		},
+		gridTemplateColumns: {
+			'gallery': 'repeat(auto-fit, minmax(400px, 1fr))',
+		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
