@@ -7,11 +7,6 @@ const nextConfig = {
                 hostname: 'avatar.iran.liara.run',               
                 pathname: '/public/**',
             },
-            {
-                protocol: 'https',
-                hostname: 'gpqfmstteyodfvouofgt.supabase.co',
-                pathname: '/storage/v1/object/public/pictures/**',
-            },
         ]
     },
 };

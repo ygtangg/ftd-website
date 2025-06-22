@@ -2,9 +2,10 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useEffect, useState } from "react";
 import { HomeIcon, CalendarIcon, PlusCircleIcon, ClipboardListIcon } from "lucide-react";
+import { createClient } from "@/lib/supabase/client"
+import { jwtDecode } from 'jwt-decode'
 
 type TabItem = {
     label: string;
@@ -40,22 +41,28 @@ const ALL_TABS: TabItem[] = [
 
 export default function Sidebar() {
     const pathname = usePathname();
-    const { user, getPermission } = useKindeBrowserClient();
     const [tabs, setTabs] = useState<TabItem[]>([]);
 
     useEffect(() => {
         async function filterTabs() {
+            const supabase = await createClient();
+            const { data: sessionData } = await supabase.auth.getSession();
+            var role = null;
+            if (sessionData.session) {
+                type DancerJwtPayload = {
+                    dancer_role: string
+                    [key: string]: any
+                }
+                const jwt = jwtDecode<DancerJwtPayload>(sessionData.session.access_token)
+                role = jwt.dancer_role
+            }
+
             const filteredTabs = [];
 
             for (const tab of ALL_TABS) {
-                if (!tab.permission) {
+                if (!tab.permission || tab.permission == role) {
                     filteredTabs.push(tab);
                     continue;
-                }
-
-                const permissions = await getPermission(tab.permission);
-                if (permissions?.isGranted) {
-                    filteredTabs.push(tab);
                 }
             }
 
@@ -63,8 +70,8 @@ export default function Sidebar() {
         }
 
         filterTabs();
-    }, [user, getPermission]);
-
+    }, []);
+   
     return (
         <div className="h-screen flex flex-col bg-white border-r w-64 fixed">
             <nav className="flex-1 py-6 px-4 space-y-1 overflow-y-auto">

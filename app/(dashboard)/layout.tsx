@@ -4,7 +4,6 @@ import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/image/ftd_logo.png";
-import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 import { LogOutIcon } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -23,11 +22,12 @@ export default function DashboardLayout({
         <Link href="/dashboard" className="flex items-center">
           <Image src={logo} height={100} alt="logo" />
         </Link>
-        
+        {/* TODO: setup logout
         <LogoutLink className="flex items-center text-sm text-gray-600 hover:text-jujube transition-colors">
           <LogOutIcon className="h-4 w-4 mr-1" />
           <span className="hidden sm:inline">Sign Out</span>
         </LogoutLink>
+        */}
       </header>
 
       <div className="flex flex-1 pt-16"> 
