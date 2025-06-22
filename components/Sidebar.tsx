@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { useEffect, useState } from "react";
 import { HomeIcon, CalendarIcon, PlusCircleIcon, ClipboardListIcon } from "lucide-react";
 
@@ -40,9 +39,9 @@ const ALL_TABS: TabItem[] = [
 
 export default function Sidebar() {
     const pathname = usePathname();
-    const { user, getPermission } = useKindeBrowserClient();
     const [tabs, setTabs] = useState<TabItem[]>([]);
 
+    /*
     useEffect(() => {
         async function filterTabs() {
             const filteredTabs = [];
@@ -53,10 +52,7 @@ export default function Sidebar() {
                     continue;
                 }
 
-                const permissions = await getPermission(tab.permission);
-                if (permissions?.isGranted) {
-                    filteredTabs.push(tab);
-                }
+            // TODO: setup sidebar filter by roles
             }
 
             setTabs(filteredTabs);
@@ -64,7 +60,8 @@ export default function Sidebar() {
 
         filterTabs();
     }, [user, getPermission]);
-
+    */ 
+   
     return (
         <div className="h-screen flex flex-col bg-white border-r w-64 fixed">
             <nav className="flex-1 py-6 px-4 space-y-1 overflow-y-auto">

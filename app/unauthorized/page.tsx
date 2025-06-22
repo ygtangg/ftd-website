@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 
 export default async function Unauthorized() {
-  const { isAuthenticated } = getKindeServerSession();
+  {/* TODO: setup unauthorized page
+  const { isAuthenticated } = ;
   const authenticated = await isAuthenticated();
 
   return (
@@ -20,7 +20,7 @@ export default async function Unauthorized() {
         </ul>
         <div className="flex flex-col space-y-2">
           <Link 
-            href={authenticated ? "/dashboard" : "/"} 
+            href="/"
             className="bg-jujube text-white py-2 px-4 rounded hover:bg-jujube/80"
           >
             {authenticated ? "Go to Dashboard" : "Go Home"}
@@ -35,4 +35,5 @@ export default async function Unauthorized() {
       </div>
     </div>
   );
+  */}
 }
