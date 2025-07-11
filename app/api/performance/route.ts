@@ -19,20 +19,10 @@ export async function GET() {
 }
 
 export async function POST(req: Request) {
-//   const supabase = await createClient(); 
+  const supabase = await createClient(); 
 
   try {
-    // const body = await req.json(); 
-
-    // const { data, error } = await supabase
-    //     .from('performances')
-    //     .insert([body]);
-
-    // if (error) {
-    //   console.error("Supabase error:", error);
-    //   return Response.json({ message: "Database error" }, { status: 500 });
-    // }
-    const data = await req.json();
+    const form = await req.json();
     const requiredFields = [
       "title",
       "performance_datetime",
@@ -42,13 +32,21 @@ export async function POST(req: Request) {
       "opt_in_deadline"
     ];
     for (const field of requiredFields) {
-      if (!data[field] || String(data[field]).trim() === "") {
+      if (!form[field] || String(form[field]).trim() === "") {
         return Response.json(
           { message: `Missing or empty field: ${field}` },
         );
       }
     }
-    console.log(data);
+    const { data, error } = await supabase
+        .from('performances')
+        .insert([form]);
+
+    if (error) {
+      console.error("Supabase error:", error);
+      return Response.json({ message: "Database error" }, { status: 500 });
+    }
+
     return Response.json({ message: "Performance opportunity posted!" });
   } catch (e) {
     console.error("Error in POST handler:", e);

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { createClient } from '@/lib/supabase/server'
 
 export default async function Unauthorized() {
-  {/* TODO: setup unauthorized page
-  const { isAuthenticated } = ;
-  const authenticated = await isAuthenticated();
+  const supabase = await createClient()
+  const { data, error } = await supabase.auth.getUser();
+  const authenticated = error || !data?.user;
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -35,5 +36,4 @@ export default async function Unauthorized() {
       </div>
     </div>
   );
-  */}
 }

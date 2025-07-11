@@ -37,30 +37,6 @@ export default function BoardDashboard() {
   
   const [loading, setLoading] = useState(false);
 
-  // const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   setLoading(true);
-    
-  //   const form = e.currentTarget;
-  //   const formData = new FormData(form);
-    
-  //   try {
-  //     const res = await fetch('/api/performance', {
-  //       method: "POST",
-  //       body: JSON.stringify(formData),
-  //     })
-  //     if (res.ok) {
-  //       console.log('Form submitted successfully!');
-  //     } else {
-  //       console.error('Error submitting form:', res.statusText);
-  //     }
-  //   } catch (error) {
-  //     console.error('Network error:', error);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;

@@ -55,12 +55,10 @@ export const Navbar = () => {
                     <Link href="/contact" className="text-black text-base mx-2 hover:text-jujube">
                         Contact
                     </Link>
-                    {/* TODO: setup login
-                    <LoginLink className="flex items-center text-black text-base mx-2 hover:text-jujube">
+                    <Link href="/login" className="flex items-center text-black text-base mx-2 hover:text-jujube">
                         <LogInIcon className="mr-1 h-4 w-4" />
                         Sign In
-                    </LoginLink>
-                    */}
+                    </Link>
                 </div>
                 <div className={ "md:hidden flex items-center"}>
                     <button 

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { HomeIcon, CalendarIcon, PlusCircleIcon, ClipboardListIcon } from "lucide-react";
+import { createClient } from "@/lib/supabase/client"
+import { jwtDecode } from 'jwt-decode'
 
 type TabItem = {
     label: string;
@@ -41,26 +43,34 @@ export default function Sidebar() {
     const pathname = usePathname();
     const [tabs, setTabs] = useState<TabItem[]>([]);
 
-    /*
     useEffect(() => {
         async function filterTabs() {
+            const supabase = await createClient();
+            const { data: sessionData } = await supabase.auth.getSession();
+            var role = null;
+            if (sessionData.session) {
+                type DancerJwtPayload = {
+                    dancer_role: string
+                    [key: string]: any
+                }
+                const jwt = jwtDecode<DancerJwtPayload>(sessionData.session.access_token)
+                role = jwt.dancer_role
+            }
+
             const filteredTabs = [];
 
             for (const tab of ALL_TABS) {
-                if (!tab.permission) {
+                if (!tab.permission || tab.permission == role) {
                     filteredTabs.push(tab);
                     continue;
                 }
-
-            // TODO: setup sidebar filter by roles
             }
 
             setTabs(filteredTabs);
         }
 
         filterTabs();
-    }, [user, getPermission]);
-    */ 
+    }, []);
    
     return (
         <div className="h-screen flex flex-col bg-white border-r w-64 fixed">
