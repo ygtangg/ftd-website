@@ -4,43 +4,36 @@ import Sidebar from "@/components/Sidebar";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "../../public/image/ftd_logo.png";
-import { LogOutIcon } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "FTD Dashboard",
-  description: "FTD Members Dashboard",
+	title: "FTD Dashboard",
+	description: "FTD Members Dashboard",
 };
 
-export default function DashboardLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="flex flex-col h-screen">
-      <header className="fixed top-0 left-0 right-0 h-20 bg-white border-b z-20 flex items-center justify-between px-7">
-        <Link href="/dashboard" className="flex items-center">
-          <Image src={logo} height={100} alt="logo" />
-        </Link>
-        {/* TODO: setup logout
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+	return (
+		<div className="flex flex-col h-screen">
+			<header className="fixed top-0 left-0 right-0 h-20 bg-white border-b z-20 flex items-center justify-between px-7">
+				<Link href="/dashboard" className="flex items-center">
+					<Image src={logo} height={100} alt="logo" />
+				</Link>
+				{/* TODO: setup logout
         <LogoutLink className="flex items-center text-sm text-gray-600 hover:text-jujube transition-colors">
           <LogOutIcon className="h-4 w-4 mr-1" />
           <span className="hidden sm:inline">Sign Out</span>
         </LogoutLink>
         */}
-      </header>
+			</header>
 
-      <div className="flex flex-1 pt-16"> 
-        <div className="fixed left-0 top-16 bottom-0 w-64 z-10 bg-white border-r">
-          <Sidebar />
-        </div>
-        
-        <div className="ml-64 flex-1 overflow-hidden">
-          <main className="p-6 h-full overflow-y-auto">
-            {children}
-          </main>
-        </div>
-      </div>
-    </div>
-  );
+			<div className="flex flex-1 pt-16">
+				<div className="fixed left-0 top-16 bottom-0 w-64 z-10 bg-white border-r">
+					<Sidebar />
+				</div>
+
+				<div className="ml-64 flex-1 overflow-hidden">
+					<main className="p-6 h-full overflow-y-auto">{children}</main>
+				</div>
+			</div>
+		</div>
+	);
 }
