@@ -1,14 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
-
-type Dancer = {
-    name: string;
-    image: string;
-    facts: string;
-    style: string;
-    role?: string;
-}
+import { Dancer } from "@/types/Dancer"
 
 type DancerCardProps = {
     dancer: Dancer;
