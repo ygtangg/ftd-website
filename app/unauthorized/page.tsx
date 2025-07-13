@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import { createClient } from '@/lib/supabase/server'
 
 export default async function Unauthorized() {
-  const { isAuthenticated } = getKindeServerSession();
-  const authenticated = await isAuthenticated();
+  const supabase = await createClient()
+  const { data, error } = await supabase.auth.getUser();
+  const authenticated = error || !data?.user;
 
   return (
     <div className="min-h-screen flex items-center justify-center">
@@ -20,7 +21,7 @@ export default async function Unauthorized() {
         </ul>
         <div className="flex flex-col space-y-2">
           <Link 
-            href={authenticated ? "/dashboard" : "/"} 
+            href="/"
             className="bg-jujube text-white py-2 px-4 rounded hover:bg-jujube/80"
           >
             {authenticated ? "Go to Dashboard" : "Go Home"}

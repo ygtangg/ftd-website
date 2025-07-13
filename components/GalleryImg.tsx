@@ -1,23 +1,44 @@
 import Image from "next/image";
+import path from "path";
+import { imageSizeFromFile } from 'image-size/fromFile'
 
 type GalleryImgProps = {
     url: string;
-  }
+}
   
 
-export default function GalleryImg({ url }: GalleryImgProps) {
+function publicUrlToFsPath(url: string) {
+    const relPath = url.replace(/^\//, "");
+    return path.join(process.cwd(), "public", relPath);
+}
+  
+async function getDimension(url: string) {
+    const filePath = publicUrlToFsPath(url);
+    const { width, height } = await imageSizeFromFile(filePath);
+    return { width, height };
+  }
+
+export default async function GalleryImg({ url }: GalleryImgProps) {
+    
+    const { width, height } = await getDimension(url);
+    const widthHeightRatio = height / width;
+    const galleryHeight = Math.ceil(400 * widthHeightRatio);
+    const photoSpans = Math.ceil(galleryHeight / 10) + 1;
+    
     return (
-        <div className="relative w-full h-72 group">
-            <Image
-                src={url}
-                alt="Gallery Image"
-                className="object-cover group-hover:opacity-75"
-                fill={true}
-                sizes="(min-width: 2880px) 432px, (min-width: 2460px) calc(8.75vw + 217px), 
-                (min-width: 2060px) calc(12.11vw + 183px), (min-width: 1640px) calc(16.75vw + 158px), 
-                (min-width: 1600px) calc(30vw + 43px), (min-width: 1240px) calc(24.41vw + 130px), 
-                (min-width: 840px) calc(43.42vw + 68px), (min-width: 480px) 100vw, calc(8.13vw + 407px)"
-            />
+        <div className="w-[400px] justify-self-center"
+            style={{ gridRow: `span ${photoSpans}`}}
+        >
+            <div className="overflow-hidden group">
+                <Image
+                    src={url}
+                    alt="Gallery Image"
+                    width={width}
+                    height={height}
+                    className="group-hover:opacity-75"
+                    sizes="400px"
+                />
+            </div>
         </div>
     );
 }

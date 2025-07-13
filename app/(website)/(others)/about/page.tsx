@@ -38,12 +38,7 @@ export default function About() {
             const withURL = data.map((d) => ({
                 ...d,
                 picture_url: d.picture
-                    ? supabase
-                        .storage
-                        .from("pictures/members/")
-                        .getPublicUrl(d.picture)
-                        .data
-                        .publicUrl
+                    ? `/members/${d.picture}`
                     : null,
             }))
 
