@@ -30,15 +30,13 @@ export default function DashboardLayout({
         */}
       </header>
 
-      <div className="flex flex-1 pt-16"> 
+      <div className="flex flex-1 pt-16">
         <div className="fixed left-0 top-16 bottom-0 w-64 z-10 bg-white border-r">
           <Sidebar />
         </div>
-        
+
         <div className="ml-64 flex-1 overflow-hidden">
-          <main className="p-6 h-full overflow-y-auto">
-            {children}
-          </main>
+          <main className="p-6 h-full overflow-y-auto">{children}</main>
         </div>
       </div>
     </div>

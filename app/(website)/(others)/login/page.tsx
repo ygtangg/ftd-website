@@ -1,12 +1,15 @@
-import { login } from './actions'
+import { login } from "./actions";
 
 export default function LoginPage() {
   return (
     <div className="flex min-h-[calc(100vh-240px)] items-center justify-center">
-      <form className="w-full max-w-sm p-8 bg-gray-50 rounded shadow-md space-y-6" >
+      <form className="w-full max-w-sm p-8 bg-gray-50 rounded shadow-md space-y-6">
         <h1 className="text-2xl font-bold text-center mb-4">Log in</h1>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="email"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Email:
           </label>
           <input
@@ -18,7 +21,10 @@ export default function LoginPage() {
           />
         </div>
         <div>
-          <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+          <label
+            htmlFor="password"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
             Password:
           </label>
           <input
@@ -37,5 +43,5 @@ export default function LoginPage() {
         </button>
       </form>
     </div>
-  )
+  );
 }

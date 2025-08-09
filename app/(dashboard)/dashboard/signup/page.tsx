@@ -4,10 +4,10 @@ export default function MemberDashboard() {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Member Dashboard</h1>
-      
+
       <div className="p-6 bg-white rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">Performance Sign-ups</h2>
-        
+
         <div className="mb-6">
           <h3 className="font-medium mb-2">Available Performances</h3>
           <div className="border rounded-lg overflow-hidden">
@@ -29,7 +29,7 @@ export default function MemberDashboard() {
             </div>
           </div>
         </div>
-        
+
         <div>
           <h3 className="font-medium mb-2">My Performances</h3>
           <div className="border rounded-lg overflow-hidden">

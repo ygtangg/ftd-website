@@ -3,16 +3,16 @@ import { Forum, Arizonia } from "next/font/google";
 import "./globals.css";
 
 // Font definitions
-const forum = Forum({ 
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-forum',
+const forum = Forum({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-forum",
 });
 
-const arizonia = Arizonia({ 
-  subsets: ['latin'],
-  weight: '400',
-  variable: '--font-arizonia',
+const arizonia = Arizonia({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-arizonia",
 });
 
 export const metadata: Metadata = {
@@ -21,15 +21,15 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html lang="en">
-            <body className={`${forum.variable} ${arizonia.variable}`}>
-                {children}
-            </body>
-        </html>
-    );
+  return (
+    <html lang="en">
+      <body className={`${forum.variable} ${arizonia.variable}`}>
+        {children}
+      </body>
+    </html>
+  );
 }

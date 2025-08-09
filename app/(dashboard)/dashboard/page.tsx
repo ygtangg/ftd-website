@@ -9,19 +9,29 @@ export default function DashboardPage() {
             Use the sidebar to navigate through different sections.
           </p>
         </div>
-        
+
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-2">Upcoming Events</h2>
           <p className="text-gray-600">
             Check the calendar for upcoming performances.
           </p>
         </div>
-        
+
         <div className="bg-white rounded-lg shadow p-6">
           <h2 className="text-xl font-semibold mb-2">Quick Actions</h2>
           <div className="space-y-2 mt-4">
-            <a href="/dashboard/board" className="text-jujube hover:underline block">View Calendar</a>
-            <a href="/dashboard/member" className="text-jujube hover:underline block">Sign Up for Performances</a>
+            <a
+              href="/dashboard/board"
+              className="text-jujube hover:underline block"
+            >
+              View Calendar
+            </a>
+            <a
+              href="/dashboard/member"
+              className="text-jujube hover:underline block"
+            >
+              Sign Up for Performances
+            </a>
           </div>
         </div>
       </div>
