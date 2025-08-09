@@ -3,7 +3,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
-import { LogInIcon } from "lucide-react";
 import clsx from "clsx";
 import logo from "@/public/image/ftd_logo.png";
 import logoWhite from "@/public/image/ftd_logo_white.png";
@@ -50,13 +49,6 @@ export const Navbar = ({ gallery = false }: Props) => {
               {label}
             </Link>
           ))}
-          <Link
-            href="/login"
-            className={clsx("flex items-center text-base", hoverColor)}
-          >
-            <LogInIcon className="mr-1 h-4 w-4" />
-            Sign In
-          </Link>
         </div>
 
         {/* Mobile toggle */}
@@ -143,14 +135,6 @@ export const Navbar = ({ gallery = false }: Props) => {
               {label}
             </Link>
           ))}
-          <Link
-            href="/login"
-            className={clsx("flex items-center text-base", hoverColor)}
-            onClick={() => setIsOpen(false)}
-          >
-            <LogInIcon className="mr-1 h-4 w-4" />
-            Sign In
-          </Link>
         </div>
       </div>
     </nav>

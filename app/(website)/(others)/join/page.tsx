@@ -1,6 +1,5 @@
-import styles from "./page.module.css";
 import Image from "next/image";
-import group_pic from "@/public/image/group_pic_fa24.jpg";
+import group_pic from "@/public/image/group_pic_sp25.jpg";
 import Link from "next/link";
 
 export default function Join() {
@@ -21,7 +20,7 @@ export default function Join() {
       {/* Content */}
       <div className="relative z-10 text-center text-white flex flex-col items-center px-4">
         <h1 className="text-6xl md:text-8xl mb-10">JOIN US!</h1>
-        <p className="text-xl mb-10">
+        <p className="text-xl mb-20">
           We hold auditions at the beginning of each semester. Each performance
           piece have seperate auditions. Stay tuned for more information!
         </p>
