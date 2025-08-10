@@ -25,7 +25,7 @@ export default function Join() {
           piece have seperate auditions. Stay tuned for more information!
         </p>
         <Link
-          href="https://forms.gle/yourformlink"
+          href="https://forms.gle/Qpacp8xx1MqFZUcXA"
           target="_blank"
           rel="noopener noreferrer"
         >
