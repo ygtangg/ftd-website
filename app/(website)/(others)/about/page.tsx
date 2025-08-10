@@ -46,7 +46,7 @@ export default function About() {
   }, []);
 
   const boardMem = dancers
-    .filter((dancer) => dancer.role !== "member")
+    .filter((dancer) => dancer.role !== "member" && dancer.role !== "alumni")
     .map((dancer: Dancer) => ({
       name: `${dancer.first_name} ${dancer.last_name}`,
       role: dancer.role,
@@ -55,9 +55,26 @@ export default function About() {
       style: dancer.fav_dance_style,
     }));
 
+  const coPresidents = boardMem.filter(
+    (member) => member.role === "Co-President",
+  );
+
+  const otherBoard = boardMem.filter(
+    (member) => member.role !== "Co-President",
+  );
+
   const generalMem = dancers
     .filter((dancer) => dancer.role === "member")
     .map((dancer: Dancer) => ({
+      name: `${dancer.first_name} ${dancer.last_name}`,
+      image: dancer.picture_url,
+      facts: dancer.facts,
+      style: dancer.fav_dance_style,
+    }));
+
+  const alumniMem = dancers
+    .filter((dancer) => dancer.role === "alumni")
+    .map((dancer) => ({
       name: `${dancer.first_name} ${dancer.last_name}`,
       image: dancer.picture_url,
       facts: dancer.facts,
@@ -110,25 +127,58 @@ export default function About() {
 
       {/* Board Section */}
       <section className="py-12 px-4 md:px-8 bg-jujube text-white">
-        <h2 className="text-5xl font-script text-center mb-6">Board</h2>
-        <div className="w-[70vw] m-auto flex flex-wrap justify-evenly gap-8 md:gap-20">
-          {boardMem.map((board, index) => (
-            <DancerCard key={index} dancer={board} />
-          ))}
+        <div className="w-[85vw] m-auto relative border border-white p-6 pt-10 mt-8">
+          <h2 className="text-5xl text-center absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-jujube px-8">
+            Board
+          </h2>
+          <div className="w-[70vw] mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-10">
+            {coPresidents.map((member, i) => (
+              <div key={`copres-${i}`} className="w-full h-full">
+                <DancerCard dancer={member} />
+              </div>
+            ))}
+          </div>
+          <div className="w-[70vw] mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-8">
+            {otherBoard.map((member, i) => (
+              <div key={`other-${i}`} className="w-full h-full">
+                <DancerCard dancer={member} />
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* Dancers Section */}
-      <section className="w-[90vw] m-auto py-12 px-4 md:px-8">
-        <div className="relative border border-jujube p-6 pt-10 mt-8">
+      <section className="py-12 px-4 md:px-8">
+        <div className="w-[85vw] m-auto relative border border-jujube p-6 pt-10 mt-8">
           <h2 className="text-5xl text-center absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-8">
             Dancers
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4">
             {generalMem.map((dancer, index) => (
               <DancerCard key={index} dancer={dancer} />
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Alumni Section */}
+      <section className="py-12 px-4 md:px-8">
+        <div className="w-[85vw] m-auto relative border border-jujube p-6 pt-10 mt-8">
+          <h2 className="text-5xl text-center absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white px-8">
+            Alumni
+          </h2>
+          {alumniMem.length > 0 ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 gap-4">
+              {alumniMem.map((dancer, index) => (
+                <DancerCard key={index} dancer={dancer} />
+              ))}
+            </div>
+          ) : (
+            <p className="text-center text-gray-500 italic mt-6">
+              No alumni listed yet.
+            </p>
+          )}
         </div>
       </section>
     </div>

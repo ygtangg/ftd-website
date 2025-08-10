@@ -18,11 +18,11 @@ export default function DancerCard({ dancer }: DancerCardProps) {
   return (
     <div className="text-center mb-8">
       <motion.div
-        className="relative w-[15vw] h-[15vw] mx-auto"
+        className="relative w-[20vw] h-[20vw] mx-auto"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
-        transition={{ duration: 1.5, delay: 0.5 }}
+        transition={{ duration: 1, delay: 0.25 }}
       >
         <Image
           src={
@@ -36,19 +36,13 @@ export default function DancerCard({ dancer }: DancerCardProps) {
       </motion.div>
       {dancer.role ? (
         <div className="flex flex-col items-center justify-center mt-2 gap-2">
-          <h3 className="text-2xl mt-4">{dancer.name}</h3>
+          <h3 className="text-2xl mt-2">{dancer.name}</h3>
           <p className="text-lg mb-0">{dancer.role}</p>
-          <p className="w-[80%] m-auto">
-            Fav Chinese dance style: {dancer.style}
-          </p>
           <p className="w-[80%] m-auto">{dancer.facts}</p>
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center mt-2 gap-2">
-          <h3 className="text-2xl mt-4">{dancer.name}</h3>
-          <p className="w-[80%] m-auto text-sm">
-            Fav Chinese dance style: {dancer.style}
-          </p>
+          <h3 className="text-2xl mt-2">{dancer.name}</h3>
           <p className="w-[80%] m-auto text-sm">{dancer.facts}</p>
         </div>
       )}
