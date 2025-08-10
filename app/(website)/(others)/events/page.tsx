@@ -1,56 +1,96 @@
-import styles from "./page.module.css";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+import showcase from "@/public/image/sp25_show_poster.jpeg";
+import guzheng from "@/public/image/guzheng_poster.jpg";
+
+type EventItem = {
+  name: string;
+  blurb?: string;       
+  date: string;
+  time: string;
+  location: string;
+  poster: StaticImageData;
+};
+
+function EventCard({ event, isEven }: { event: EventItem; isEven: boolean }) {
+    const bgColor = isEven ? "bg-white" : "bg-jujube";          
+    const titleColor = isEven ? "text-jujube" : "text-white";   
+    const textColor = isEven ? "text-black" : "text-white";
+    const textOrder = isEven ? "md:order-1" : "md:order-2";
+    const posterOrder = isEven ? "md:order-2" : "md:order-1";
+
+    return (
+        <section className={`flex flex-col md:flex-row ${bgColor} ${textColor} py-12`}>
+            {/* Details (column) */}
+            <div className={`basis-full md:basis-1/2 ${textOrder} flex items-center justify-center p-4`}>
+                <div className="w-full max-w-prose text-center">
+                <h2 className={`${titleColor} text-4xl sm:text-5xl font-script mb-6`}>
+                    {event.name}
+                </h2>
+                {event.blurb && (
+                    <p className="italic text-base sm:text-lg mb-4">
+                    {event.blurb}
+                    </p>
+                )}
+                <div className="space-y-1 text-sm sm:text-base">
+                    <p>{event.date}</p>
+                    <p>{event.time}</p>
+                    <p>@ {event.location}</p>
+                </div>
+                </div>
+            </div>
+
+            {/* Poster (column) */}
+            <div className={`basis-full md:basis-1/2 ${posterOrder} flex justify-center items-center m-6 border-4 border-jujube`}>
+                <Image
+                src={event.poster}
+                alt={`${event.name} poster`}
+                width={600} 
+                height={800}
+                className="object-cover"
+                // remove priority or set conditionally for the first card only
+                />
+            </div>
+        </section>
+    );
+}
 
 export default function Events() {
-  const events = [
+  const events: EventItem[] = [
     {
-      name: "Event Name",
-      description: "bla bla bla",
-      date: "Date:",
-      time: "Time:",
-      location: "Location:",
-      poster: "/path/to/poster.jpg",
+      name: "Spring 2025 Showcase",
+      blurb:
+        "Experience the elegance of classical, Han-Tang, Dai, and Dunhuang group pieces, \
+        plus solos, duets, and trios highlighting the richness of Chinese dance.",
+      date: "May 11, 2025",
+      time: "1:00 – 3:00 PM",
+      location: "Hearst Gym 230",
+      poster: showcase,
     },
+    {
+      name: "Guzheng x Dance Collaboration",
+      blurb:
+        "Experience the timeless beauty of Chinese poetry, dance, and music in a captivating \
+        collaboration of guzheng, strings, poetry recitation, and dance. From the bold spirit \
+        of Li Bai to the graceful vision of Su Shi, centuries of artistry come alive on stage in \
+        this unique cultural celebration.",
+      date: "Aug 24, 2025",
+      time: "2:00 – 4:00 PM",
+      location: "San Francisco Conservatory of Music, Oak Street, CA",
+      poster: guzheng,
+    },
+    // add more events by pushing objects here
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Current/Featured Event Section */}
-      <section className="py-12 px-4 md:px-8 lg:px-16">
-        <div className="flex flex-col md:flex-row md:items-center gap-8">
-          {/* Event Details */}
-          <div className="md:w-1/2 flex flex-col items-center text-center">
-            <h1 className="text-jujube text-5xl font-script mb-6">
-              Spring 2025 Showcase
-            </h1>
-            <div className="space-y-1">
-              <p className="italic text-lg mb-4">
-                Join us to experience the elegance of classical, Han-Tang, Dai,
-                and Dunhuang group pieces, alongside a vibrant array of solo,
-                duet, and trio performances highlighting the rich diversity of
-                Chinese dance styles!{" "}
-              </p>
-              <p>May 11, 2025</p>
-              <p>1:00 - 3:00 PM</p>
-              <p>@ Hearst Gym 230</p>
-            </div>
-          </div>
+  <div className="flex flex-col min-h-screen">
+    {[...events].reverse().map((ev, index) => (
+      <EventCard
+        key={ev.name}
+        event={ev}
+        isEven={index % 2 === 0}
+      />
+    ))}
+  </div>
+);
 
-          {/* Event Poster */}
-          <div className="md:w-1/2">
-            <div className="w-full aspect-square bg-gray-200 border-8 border-jujube relative">
-              <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                Poster
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Coming Soon Section */}
-      <section className="h-[30vw] py-24 px-4 md:px-8 lg:px-16 bg-jujube text-white flex items-center justify-center">
-        <h2 className="text-5xl font-script text-center">Coming Soon</h2>
-      </section>
-    </div>
-  );
 }

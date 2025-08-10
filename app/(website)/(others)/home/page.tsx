@@ -102,7 +102,7 @@ export default function Home() {
                 transition={{ duration: 0.5, delay: index * 0.2 }}
               >
                 <div className="flex-1">
-                  <h3 className="font-medium text-3xl">{event.event_name}</h3>
+                  <h3 className="font-medium text-2xl">{event.event_name}</h3>
                   <p className="text-xl text-gray-600">
                     {event.event_location}
                   </p>
