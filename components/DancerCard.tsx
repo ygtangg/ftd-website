@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { CldImage } from "next-cloudinary";
 
 type Dancer = {
   name: string;
@@ -24,15 +25,21 @@ export default function DancerCard({ dancer }: DancerCardProps) {
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.25 }}
       >
-        <Image
-          src={
-            dancer.image ||
-            `https://avatar.iran.liara.run/public/girl?username=${encodeURIComponent(dancer.name)}`
-          }
-          alt={dancer.name}
-          fill
-          className="rounded-full aspect-square object-cover"
-        />
+        {dancer.image ? (
+          <CldImage
+            src={dancer.image} // Cloudinary public ID
+            alt={dancer.name}
+            fill
+            className="rounded-full aspect-square object-cover"
+          />
+        ) : (
+          <Image
+            src={`https://avatar.iran.liara.run/public/girl?username=${encodeURIComponent(dancer.name)}`}
+            alt={dancer.name}
+            fill
+            className="rounded-full aspect-square object-cover"
+          />
+        )}
       </motion.div>
       {dancer.role ? (
         <div className="flex flex-col items-center justify-center mt-2 gap-2">

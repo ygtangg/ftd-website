@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import repertoires from "@/data/repertoires.json";
+import { CldImage } from "next-cloudinary";
 
 type RawRepertoire = {
   ["name-eng"]: string;
@@ -88,7 +88,7 @@ function RepertoireCard({
         title="Click to read description"
       >
         <div className="relative w-full h-[70vh] overflow-hidden">
-          <Image
+          <CldImage
             src={item.poster}
             alt={`${item.nameEng} poster`}
             fill

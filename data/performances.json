@@ -5,7 +5,7 @@
     "date": "May 11, 2025",
     "time": "1:00 – 3:00 PM",
     "location": "Hearst Gym 230",
-    "poster": "/image/sp25_show_poster.jpeg"
+    "poster": "sp25-show-poster"
   },
   {
     "name": "Guzheng x Dance Collaboration",
@@ -13,6 +13,6 @@
     "date": "Aug 24, 2025",
     "time": "2:00 – 4:00 PM",
     "location": "San Francisco Conservatory of Music, Oak Street, CA",
-    "poster": "/image/guzheng_poster.jpg"
+    "poster": "guzheng-poster"
   }
 ]

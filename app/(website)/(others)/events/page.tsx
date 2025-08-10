@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import events from "@/data/events.json";
+import events from "@/data/performances.json";
+import { CldImage } from "next-cloudinary";
 
 type EventItem = {
   name: string;
@@ -11,7 +11,7 @@ type EventItem = {
   date: string;
   time: string;
   location: string;
-  poster: string; // public path (e.g., "/image/xxx.jpg")
+  poster: string;
 };
 
 const variants = {
@@ -49,7 +49,7 @@ function Slide({ event, isEven }: { event: EventItem; isEven: boolean }) {
         {/* Poster */}
         <div className="basis-full md:basis-1/2 flex items-center justify-center order-1 md:order-2">
           <div className="m-6 border-4 border-jujube rounded-lg overflow-hidden">
-            <Image
+            <CldImage
               src={event.poster}
               alt={`${event.name} poster`}
               width={600}

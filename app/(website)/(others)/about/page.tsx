@@ -14,7 +14,6 @@ type Dancer = {
   fav_dance_style: string;
   facts: string;
   role: string;
-  picture_url: string;
 };
 
 export default function About() {
@@ -34,12 +33,7 @@ export default function About() {
         return;
       }
 
-      const withURL = data.map((d) => ({
-        ...d,
-        picture_url: d.picture ? `/members/${d.picture}` : null,
-      }));
-
-      setDancers(withURL || []);
+      setDancers(data || []);
     };
 
     fetchDancers();
@@ -50,7 +44,7 @@ export default function About() {
     .map((dancer: Dancer) => ({
       name: `${dancer.first_name} ${dancer.last_name}`,
       role: dancer.role,
-      image: dancer.picture_url,
+      image: dancer.picture,
       facts: dancer.facts,
       style: dancer.fav_dance_style,
     }));
@@ -67,7 +61,7 @@ export default function About() {
     .filter((dancer) => dancer.role === "member")
     .map((dancer: Dancer) => ({
       name: `${dancer.first_name} ${dancer.last_name}`,
-      image: dancer.picture_url,
+      image: dancer.picture,
       facts: dancer.facts,
       style: dancer.fav_dance_style,
     }));
@@ -76,7 +70,7 @@ export default function About() {
     .filter((dancer) => dancer.role === "alumni")
     .map((dancer) => ({
       name: `${dancer.first_name} ${dancer.last_name}`,
-      image: dancer.picture_url,
+      image: dancer.picture,
       facts: dancer.facts,
       style: dancer.fav_dance_style,
     }));
