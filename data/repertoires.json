@@ -1,0 +1,65 @@
+[
+  {
+    "name-eng": "Paper Fan Scholars",
+    "name-chi": "纸扇书生",
+    "style": "Classical Chinese",
+    "blurb": "According to Hu Yan, choreographer of the dance piece, paper fans are used by all of the male dancers throughout the dance piece, which is a symbolic element for traditional Chinese dance. The dancers, who play the role of ancient scholars, read poems, drink wine and dance with fans, expressing amusement and joy.",
+    "director": "Sophia Luo",
+    "semester": "Sp25",
+    "poster": "/gallery/sp25-showcase-scholar.jpg"
+  },
+  {
+    "name-eng": "White Orchid",
+    "name-chi": "栀子花 白兰花",
+    "style": "Classical Chinese",
+    "blurb": "This piece depicts the nostalgic melody of \"Gardenia and White Orchid\" as it drifts through Shanghai’s alleyways like the lingering scent of flowers at dawn. This lilting Shanghainese folk tune, alongside the dancers, wearing qipao, captures the city’s golden-era charm—vendors’ soft cries woven into a waltz, the hum of gramophones blending with the fragrance of gardenias pinned to cheongsams.",
+    "director": "Naomi Lyu",
+    "semester": "Sp25",
+    "poster": "/image/sp25-white-orchid.jpg"
+  },
+  {
+    "name-eng": "Through the Bamboo Forest",
+    "name-chi": "竹林深处",
+    "style": "Dai Ethic Folk Dance",
+    "blurb": "The Dai ethnic group, known for their rich cultural traditions, particularly their dance, are located in southwest China, primarily in Yunnan Province. The Dai ethnic group in China is known for their vibrant Water Splashing Festival, a celebration of the new year that involves playful water battles and is deeply rooted in their culture.",
+    "director": "Sophia Luo",
+    "semester": "Sp25",
+    "poster": "/gallery/sp25-showcase-dai.jpg"
+  },
+  {
+    "name-eng": "FTD x Wushu Joint Piece",
+    "name-chi": "舞与武",
+    "style": "Classical Chinese + Wushu",
+    "blurb": "FTD and Wushu have been collaborators and friends for many years! This year we are pleased to showcase a joint piece. Inspired by the legendary Lanling King and set to the stirring tune of Lanling King Enters the Battle, this piece brings together Cal Wushu and FTD in a powerful fusion of Chinese dance and martial art. Everyone will be holding a different prop. Through synchronized rhythms and contrasting styles, the piece celebrates the unity and diversity embedded in Chinese physical art forms.",
+    "director": "Wendy Qi",
+    "semester": "Sp25",
+    "poster": "/gallery/sp25-showcase-joint.jpg"
+  },
+  {
+    "name-eng": "Barre Segment",
+    "name-chi": "身韵与技巧",
+    "style": "Chinese Dance Technique",
+    "blurb": " This piece is a showcase of Classical Chinese dance techniques, intertwining elegance, control, and power.",
+    "director": "Stefanie Chen",
+    "semester": "Sp25",
+    "poster": "/gallery/sp25-showcase-bar.jpg"
+  },
+  {
+    "name-eng": "Song of Lotus",
+    "name-chi": "莲鼓乐歌行",
+    "style": "Classical Chinese",
+    "blurb": "This piece tells the story of girls from the Zhejiang area who pick lotus flowers and pods from the lotus ponds. The dance embodies three key cultural elements of the area: singing, drums, and lotus.",
+    "director": "Stefanie Chen",
+    "semester": "Fa24 - Sp25",
+    "poster": "/gallery/sp25-showcase-lotus.jpg"
+  },
+  {
+    "name-eng": "Awakening of the Tang Figurines",
+    "name-chi": "唐印",
+    "style": "Han Tang",
+    "blurb": "This piece tells the story of Tang dynasty figurines undergoing a transformation and coming alive overnight, then turning back into stone once the sun hits.",
+    "director": "Sophia Luo",
+    "semester": "Fa24",
+    "poster": "/gallery/sp25-showcase-tang.jpg"
+  }
+]
