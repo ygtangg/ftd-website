@@ -19,8 +19,12 @@ export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
   const events: Event[] = (eventData as Event[])
-    .filter(event => new Date(event.event_datetime) > new Date())
-    .sort((a, b) => new Date(a.event_datetime).getTime() - new Date(b.event_datetime).getTime())
+    .filter((event) => new Date(event.event_datetime) > new Date())
+    .sort(
+      (a, b) =>
+        new Date(a.event_datetime).getTime() -
+        new Date(b.event_datetime).getTime(),
+    )
     .slice(0, 3);
 
   useEffect(() => {

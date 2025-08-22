@@ -17,7 +17,7 @@ type Dancer = {
 
 export default function About() {
   const dancers: Dancer[] = (dancersData as Dancer[]).sort((a, b) =>
-    a.last_name.localeCompare(b.last_name)
+    a.last_name.localeCompare(b.last_name),
   );
 
   const boardMem = dancers
@@ -56,7 +56,6 @@ export default function About() {
       style: dancer.fav_dance_style,
     }));
 
-  console.log(generalMem);
   return (
     <div className="flex flex-col">
       {/* About Us Section */}
