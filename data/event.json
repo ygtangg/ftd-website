@@ -1,0 +1,27 @@
+[
+  {
+    "event_name": "Words in Action",
+    "event_datetime": "2025-04-15 00:00:00+00",
+    "event_location": "Durham Studio in Dwinelle"
+  },
+  {
+    "event_name": "Eggster",
+    "event_datetime": "2025-04-12 18:20:00+00",
+    "event_location": "Physics Building"
+  },
+  {
+    "event_name": "East Asian Union Night Market",
+    "event_datetime": "2025-04-16 02:00:00+00",
+    "event_location": "Lower Sproul"
+  },
+  {
+    "event_name": "42nd San Francisco Guzheng Ensemble Annual Concert",
+    "event_datetime": "2025-08-24 14:00:00+00",
+    "event_location": "San Francisco Conservatory of Music, Oak Street, CA"
+  },
+  {
+    "event_name": "Calapalooza",
+    "event_datetime": "2025-08-29 00:00:00+00",
+    "event_location": "Savio Steps"
+  }
+]

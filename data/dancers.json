@@ -1,49 +1,29 @@
 [
   {
-    "id": 5,
-    "first_name": "Yaya",
-    "last_name": "Hao",
-    "picture": "Yaya-Hao-pic.jpeg",
-    "fav_dance_style": "Dai ethnic dance",
-    "facts": "",
-    "role": "member",
-    "user_id": null
-  },
-  {
-    "id": 6,
-    "first_name": "Naomi Qianxun ",
-    "last_name": "Lyu",
-    "picture": "Naomi-Qianxun-Lyu-pic.jpeg",
-    "fav_dance_style": "Fusion with street dance",
-    "facts": "I like to draw different blocking on my little good note app",
-    "role": "member",
-    "user_id": null
-  },
-  {
-    "id": 9,
-    "first_name": "Wendy",
-    "last_name": "Qi",
-    "picture": "Wendy-Qi-pic.jpg",
-    "fav_dance_style": "Yangge",
-    "facts": "I recently started learning Salsa dance :)",
-    "role": "member",
-    "user_id": null
-  },
-  {
     "id": 0,
     "first_name": "Kelly",
     "last_name": "Tang",
-    "picture": "Kelly-Tang-pic.jpg",
+    "picture": "Kelly-Tang-pic",
     "fav_dance_style": "Classical",
     "facts": "",
     "role": "Co-President",
     "user_id": "7e3a4149-2fd4-4584-92d5-edde7420bb0d"
   },
   {
+    "id": 1,
+    "first_name": "Emmy",
+    "last_name": "Tang",
+    "picture": "Emmy-Tang-pic",
+    "fav_dance_style": "Classical",
+    "facts": "Trained in ballet and modern but always want to do Chinese dance! I also love playing volleyball 🤣",
+    "role": "Performance Coordinator",
+    "user_id": null
+  },
+  {
     "id": 2,
     "first_name": "Lucy",
     "last_name": "Liu",
-    "picture": "Lucy-Zixi-Liu-pic.JPG",
+    "picture": "Lucy-Zixi-Liu-pic",
     "fav_dance_style": "Classical",
     "facts": "",
     "role": "member",
@@ -60,10 +40,80 @@
     "user_id": null
   },
   {
+    "id": 4,
+    "first_name": "Yinbei",
+    "last_name": "Guo",
+    "picture": "Yinbei-Guo-pic",
+    "fav_dance_style": "Classical",
+    "facts": "",
+    "role": "alumni",
+    "user_id": null
+  },
+  {
+    "id": 5,
+    "first_name": "Yaya",
+    "last_name": "Hao",
+    "picture": "Yaya-Hao-pic",
+    "fav_dance_style": "Dai ethnic dance",
+    "facts": "",
+    "role": "member",
+    "user_id": null
+  },
+  {
+    "id": 6,
+    "first_name": "Naomi Qianxun ",
+    "last_name": "Lyu",
+    "picture": "Naomi-Qianxun-Lyu-pic",
+    "fav_dance_style": "Fusion with street dance",
+    "facts": "I like to draw different blocking on my little good note app",
+    "role": "member",
+    "user_id": null
+  },
+  {
+    "id": 7,
+    "first_name": "Sophia",
+    "last_name": "Luo",
+    "picture": "Sophia-Luo-pic",
+    "fav_dance_style": null,
+    "facts": null,
+    "role": "Artistic Director",
+    "user_id": null
+  },
+  {
+    "id": 8,
+    "first_name": "Catalina",
+    "last_name": "Quach",
+    "picture": "Catalina-Quach-pic",
+    "fav_dance_style": null,
+    "facts": null,
+    "role": "Co-President",
+    "user_id": null
+  },
+  {
+    "id": 9,
+    "first_name": "Wendy",
+    "last_name": "Qi",
+    "picture": "Wendy-Qi-pic",
+    "fav_dance_style": "Yangge",
+    "facts": "I recently started learning Salsa dance :)",
+    "role": "member",
+    "user_id": null
+  },
+  {
     "id": 12,
     "first_name": "Hannah ",
     "last_name": "Yu",
     "picture": null,
+    "fav_dance_style": null,
+    "facts": null,
+    "role": "member",
+    "user_id": null
+  },
+  {
+    "id": 13,
+    "first_name": "Elyssa",
+    "last_name": "Tong",
+    "picture": "Elyssa-Tong-pic",
     "fav_dance_style": null,
     "facts": null,
     "role": "member",
@@ -77,6 +127,16 @@
     "fav_dance_style": null,
     "facts": "",
     "role": "Finance Chair",
+    "user_id": null
+  },
+  {
+    "id": 15,
+    "first_name": "Abigail ",
+    "last_name": "Chang",
+    "picture": "Abigail-Chang-pic",
+    "fav_dance_style": "",
+    "facts": null,
+    "role": "Social Chair",
     "user_id": null
   },
   {
@@ -110,12 +170,22 @@
     "user_id": null
   },
   {
-    "id": 4,
-    "first_name": "Yinbei",
-    "last_name": "Guo",
-    "picture": "Yinbei-Guo-pic.jpeg",
-    "fav_dance_style": "Classical",
-    "facts": "",
+    "id": 19,
+    "first_name": "Michelle",
+    "last_name": "Maldonado",
+    "picture": "Michelle-Maldonado-pic",
+    "fav_dance_style": null,
+    "facts": null,
+    "role": "alumni",
+    "user_id": null
+  },
+  {
+    "id": 20,
+    "first_name": "Queena Yuyin",
+    "last_name": "Zheng",
+    "picture": "Queena-Yuyin-Zheng-pic",
+    "fav_dance_style": null,
+    "facts": null,
     "role": "alumni",
     "user_id": null
   },
@@ -130,70 +200,10 @@
     "user_id": null
   },
   {
-    "id": 15,
-    "first_name": "Abigail ",
-    "last_name": "Chang",
-    "picture": "Abigail-Chang-pic.jpg",
-    "fav_dance_style": "",
-    "facts": null,
-    "role": "Social Chair",
-    "user_id": null
-  },
-  {
-    "id": 7,
-    "first_name": "Sophia",
-    "last_name": "Luo",
-    "picture": "Sophia-Luo-pic.jpg",
-    "fav_dance_style": null,
-    "facts": null,
-    "role": "Artistic Director",
-    "user_id": null
-  },
-  {
-    "id": 8,
-    "first_name": "Catalina",
-    "last_name": "Quach",
-    "picture": "Catalina-Quach-pic.jpg",
-    "fav_dance_style": null,
-    "facts": null,
-    "role": "Co-President",
-    "user_id": null
-  },
-  {
-    "id": 13,
-    "first_name": "Elyssa",
-    "last_name": "Tong",
-    "picture": "Elyssa-Tong-pic.jpg",
-    "fav_dance_style": null,
-    "facts": null,
-    "role": "member",
-    "user_id": null
-  },
-  {
-    "id": 19,
-    "first_name": "Michelle",
-    "last_name": "Maldonado",
-    "picture": "Michelle-Maldonado-pic.jpg",
-    "fav_dance_style": null,
-    "facts": null,
-    "role": "alumni",
-    "user_id": null
-  },
-  {
-    "id": 20,
-    "first_name": "Queena Yuyin",
-    "last_name": "Zheng",
-    "picture": "Queena-Yuyin-Zheng-pic.jpg",
-    "fav_dance_style": null,
-    "facts": null,
-    "role": "alumni",
-    "user_id": null
-  },
-  {
     "id": 22,
     "first_name": "Tiffany",
     "last_name": "Cheng",
-    "picture": "Tiffany-Cheng-pic.jpg",
+    "picture": "Tiffany-Cheng-pic",
     "fav_dance_style": null,
     "facts": null,
     "role": "alumni",
@@ -203,20 +213,10 @@
     "id": 23,
     "first_name": "Yitong",
     "last_name": "Shi",
-    "picture": "Yitong-Shi-pic.jpg",
+    "picture": "Yitong-Shi-pic",
     "fav_dance_style": null,
     "facts": null,
     "role": "alumni",
-    "user_id": null
-  },
-  {
-    "id": 1,
-    "first_name": "Emmy",
-    "last_name": "Tang",
-    "picture": "Emmy-Tang-pic.jpg",
-    "fav_dance_style": "Classical",
-    "facts": "Trained in ballet and modern but always want to do Chinese dance! I also love playing volleyball 🤣",
-    "role": "Performance Coordinator",
     "user_id": null
   }
 ]

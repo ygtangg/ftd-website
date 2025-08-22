@@ -3,8 +3,7 @@
 import Image from "next/image";
 import homcom from "@/public/image/homcom.jpeg";
 import DancerCard from "@/components/DancerCard";
-import { createClient } from "@/lib/supabase/client";
-import { useState, useEffect } from "react";
+import dancersData from "@/data/dancers.json";
 import { motion } from "framer-motion";
 
 type Dancer = {
@@ -17,27 +16,9 @@ type Dancer = {
 };
 
 export default function About() {
-  const [dancers, setDancers] = useState<Dancer[]>([]);
-
-  // Fetch dancers from Supabase
-  useEffect(() => {
-    const fetchDancers = async () => {
-      const supabase = await createClient();
-      const { data, error } = await supabase
-        .from("dancers")
-        .select("*")
-        .order("last_name", { ascending: true });
-
-      if (error) {
-        console.error("Error fetching dancers:", error);
-        return;
-      }
-
-      setDancers(data || []);
-    };
-
-    fetchDancers();
-  }, []);
+  const dancers: Dancer[] = (dancersData as Dancer[]).sort((a, b) =>
+    a.last_name.localeCompare(b.last_name)
+  );
 
   const boardMem = dancers
     .filter((dancer) => dancer.role !== "member" && dancer.role !== "alumni")
