@@ -1,30 +1,26 @@
-import fs from "fs";
-import path from "path";
+"use client";
+
+import { useEffect, useState } from "react";
 import GalleryImg from "@/components/GalleryImg";
+import { motion } from "framer-motion";
 
-const IMG_EXT = new Set([
-  ".jpg",
-  ".jpeg",
-  ".png",
-  ".webp",
-  ".gif",
-  ".avif",
-  ".JPG",
-  ".JPEG",
-  ".PNG",
-  ".WEBP",
-  ".GIF",
-  ".AVIF",
-]);
+type CloudinaryImage = {
+  secure_url: string;
+  width: number;
+  height: number;
+};
 
-// choose which images to feature (by index). ex: [0, 6]
-const FEATURE_INDEXES = [0, 6, 10, 14, 17];
+export default function Gallery() {
+  const [images, setImages] = useState<CloudinaryImage[]>([]);
 
-export default async function Gallery() {
-  const galleryDir = path.join(process.cwd(), "public", "gallery");
-  const images = fs
-    .readdirSync(galleryDir)
-    .filter((f) => IMG_EXT.has(path.extname(f)));
+  useEffect(() => {
+    const fetchImages = async () => {
+      const res = await fetch("/api/cloudinary");
+      const data = await res.json();
+      setImages(data);
+    };
+    fetchImages();
+  }, []);
 
   return (
     <main className="min-h-screen bg-black">
@@ -35,9 +31,24 @@ export default async function Gallery() {
           gap-2 md:gap-3
         "
       >
-        {images.map((img, i) => (
-          <GalleryImg key={i} url={`/gallery/${img}`} featured={i % 3 === 0} />
-        ))}
+        {images.map(
+          (
+            img: { secure_url: string; width: number; height: number },
+            i: number,
+          ) => (
+            <motion.div
+              key={i}
+              className={i % 3 === 0 ? "sm:col-span-2" : ""}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              animate={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.05 }}
+            >
+              <GalleryImg img={img} featured={i % 3 === 0} />
+            </motion.div>
+          ),
+        )}
       </section>
     </main>
   );
