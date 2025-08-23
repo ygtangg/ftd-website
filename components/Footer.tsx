@@ -1,5 +1,6 @@
 import Image from "next/image";
 import logo from "../public/image/ftd_logo.png";
+import Link from "next/link";
 
 export const Footer = () => {
   return (
@@ -33,10 +34,18 @@ export const Footer = () => {
               YouTube
             </a>
           </div>
-          <div className="text-sm">&copy; {new Date().getFullYear()} FTD</div>
+          <div className="text-sm text-center">Fei Tian Dancers is a student group acting independently of the University of California. 
+            We take full responsibility for our organization and this web site. &copy; {new Date().getFullYear()} FTD</div>
         </div>
-        <div className="mt-4 sm:mt-0 flex justify-center sm:justify-end w-full sm:w-auto">
+        <div className="mt-4 sm:mt-0 flex justify-center sm:justify-end items-center gap-4 w-full sm:w-auto">
           <Image src={logo} height={100} alt="logo" />
+          <Link href="https://www.ocf.berkeley.edu">
+                <Image 
+                    src="http://www.ocf.berkeley.edu/hosting-logos/ocf-hosted-penguin.svg"
+                    alt="Hosted by the OCF"
+                    width={100}
+                    height={400} />
+            </Link>
         </div>
       </div>
     </footer>
